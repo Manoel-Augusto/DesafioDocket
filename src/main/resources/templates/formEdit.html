@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${mensagem}" th:text="${mensagem}"></div>
+
+<form action="/form/save" method="POST">
+  <div th:if="${cartorio}">
+    <input type="text" readonly id="id" name="id" th:value="${cartorio?.id}"/>
+  </div>
+  Nome:<input type="text" id="name" name="name"
+              th:value="${cartorio?.nome}"
+/>
+
+    Certidão: <select name="certidao">
+    <option th:each="certidao:${cartorio}"
+            th:value="${cartorio.id}"
+            th:text="${cartorio.nome}"
+            th:selected="${cartorio.id}==${cartorio?.id}"
+    />
+</select>
+  <button type="submit">Salvar Cartório</button>
+</form>
+</body>
+</html>
+
