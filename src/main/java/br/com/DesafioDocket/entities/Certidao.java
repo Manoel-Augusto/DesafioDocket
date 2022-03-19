@@ -16,10 +16,6 @@ public class Certidao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
 
-    /*@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="cartorio_id", referencedColumnName = "id")
-    private Cartorio cartorio;*/
 }

@@ -24,13 +24,11 @@ public class Cartorio {
 
     private String nome;
 
-    @OneToMany
-    private Set<Certidao> certidaoSet;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Certidao> certidao;
 
     @OneToOne
-    @JoinColumn(name = "endereco_id")
+    @JoinColumn(name = "endereco_id", unique = true)
     private Endereco endereco;
-
-
 
 }
