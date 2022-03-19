@@ -30,7 +30,7 @@ public class CartorioController {
 
     @GetMapping("/")
     public ModelAndView getList(){
-        List<Cartorio> cartorioList = this.service.findAll();
+        List<Cartorio> cartorioList = service.findAll();
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("cartorioList", cartorioList);
         return mv;
@@ -49,8 +49,8 @@ public class CartorioController {
     @GetMapping("/edit/{id}")
     public ModelAndView getEdit(@PathVariable("id") Long id){
         ModelAndView mv = new ModelAndView("formEdit");
-       /* List<Certidao> certidaoList = this.certidaoService.findById(id).stream().collect(Collectors.toList());
-        mv.addObject("certidaoList", certidaoList);*/
+        List<Certidao> certidaoList = this.certidaoService.findById(id).stream().collect(Collectors.toList());
+        mv.addObject("certidaoList", certidaoList);
         Cartorio cartorio = this.service.findById(id);
         mv.addObject("cartorio", cartorio);
         return mv;
@@ -61,22 +61,5 @@ public class CartorioController {
         this.service.delete(id);
         return "redirect:/";
     }
-    @GetMapping("/teste")
-    public String home(ModelMap model) {
-        List<Certidao> certidaoList = this.certidaoService.findById(1L);
-        System.out.println(certidaoList);
-        model.addAttribute("certidaoList", certidaoList);
 
-        return "home";
-    }
-
-
-    @GetMapping(value = "/teste2")
-    public ResponseEntity<List<Cartorio>> findAll() {
-
-
-        List<Cartorio> list = service.findAll();
-
-        return ResponseEntity.ok().body(list);
-    }
 }

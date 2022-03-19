@@ -4,50 +4,53 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<h1>Lista de Cartórios:</h1>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Endereço</th>
-        <th scope="col">Certidão</th>
-        <th scope="col">Ações</th>
-    </tr>
-    </thead>
+<div style="margin: 100px" >
+    <h1 style="text-align: center">Lista de Cartórios:</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr >
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Certidão</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
-    <tr th:each="cartorio:${cartorioList}">
-        <th scope="row" th:text="${cartorio.id}"></th>
-        <td th:text="${cartorio.nome}"></td>
-        <td th:text="${cartorio.endereco.rua}"></td>
+        <tr th:each="cartorio:${cartorioList}" style="height: 100px">
+            <th scope="row" th:text="${cartorio.id}"></th>
+            <td th:text="${cartorio.nome}"></td>
+            <td th:text="${cartorio.endereco.rua}"></td>
 
-        <td th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}"></td>
-
-
-        <td>
-            <a th:href="@{/edit/{id}(id=${cartorio.id})}">
-                <i class='fas fa-edit'>
-                    <button class="btn btn-primary">Editar</button>
-                </i>
-            </a>
-
-            <a th:href="@{/delete/{id}(id=${cartorio.id})}">
-                <i class='fas fa-eraser'>
-                    <button class="btn btn-secondary">Excluir</button>
-                </i>
-            </a>
+            <td th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}"></td>
 
 
-        </td>
-    </tr>
+            <td>
+                <a th:href="@{/edit/{id}(id=${cartorio.id})}">
+                    <i class='fas fa-edit'>
+                        <button class="btn btn-primary">Editar</button>
+                    </i>
+                </a>
 
-    </tbody>
-</table>
+                <a th:href="@{/delete/{id}(id=${cartorio.id})}">
+                    <i class='fas fa-eraser'>
+                        <button class="btn btn-secondary">Excluir</button>
+                    </i>
+                </a>
+
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a th:href="@{/}">
+        <button class="btn btn-primary">Cadastrar Cartorio</button>
+    </a>
+</div>
 </body>
-<a th:href="@{/}">
-    <button class="btn btn-primary">Cadastrar Cartorio</button>
-</a>
+
 </html>

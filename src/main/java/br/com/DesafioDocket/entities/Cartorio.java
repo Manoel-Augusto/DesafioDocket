@@ -24,11 +24,14 @@ public class Cartorio {
 
     private String nome;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Certidao> certidao;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_cartorio_certidao",
+            joinColumns = @JoinColumn(name = "cartorio_id"),
+            inverseJoinColumns = @JoinColumn(name = "certidao_id"))
+    private Set<Certidao> certidao;
 
     @OneToOne
-    @JoinColumn(name = "endereco_id", unique = true)
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
 }
