@@ -26,7 +26,7 @@ public class CartorioService {
        // List <Certidao> certidaoList = new ArrayList<>();
        // cartorioList.forEach(i-> i.getCertidaoSet().forEach(j-> certidaoList.add(j)));
         //System.out.println(certidaoList);
-        System.out.println(cartorioList);
+      //  System.out.println(cartorioList);
         return cartorioList;
     }
 

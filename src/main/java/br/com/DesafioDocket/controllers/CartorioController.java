@@ -43,14 +43,15 @@ public class CartorioController {
             redirect.addFlashAttribute("mensagem", "Verifique os campos obrigatórios");
             return "redirect:/form/add";
         }
+        System.out.println(cartorio);
         this.service.save(cartorio);
         return "redirect:/";
     }
     @GetMapping("/edit/{id}")
     public ModelAndView getEdit(@PathVariable("id") Long id){
         ModelAndView mv = new ModelAndView("formEdit");
-        List<Certidao> certidaoList = this.certidaoService.findById(id).stream().collect(Collectors.toList());
-        mv.addObject("certidaoList", certidaoList);
+        List<Certidao> certidao= this.certidaoService.findById(id).stream().collect(Collectors.toList());
+        mv.addObject("certidao", certidao);
         Cartorio cartorio = this.service.findById(id);
         mv.addObject("cartorio", cartorio);
         return mv;

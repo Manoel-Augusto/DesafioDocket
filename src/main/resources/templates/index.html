@@ -25,10 +25,15 @@
             <td th:text="${cartorio.nome}"></td>
             <td th:text="${cartorio.endereco.rua}"></td>
 
-            <td th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}"></td>
-
-
             <td>
+                <li th:each="certidao : ${cartorio.certidao}" th:text="${certidao.nome}">
+
+                </li>
+            </td>
+
+
+            <td style="align-items: center
+">
                 <a th:href="@{/edit/{id}(id=${cartorio.id})}">
                     <i class='fas fa-edit'>
                         <button class="btn btn-primary">Editar</button>
@@ -37,7 +42,7 @@
 
                 <a th:href="@{/delete/{id}(id=${cartorio.id})}">
                     <i class='fas fa-eraser'>
-                        <button class="btn btn-secondary">Excluir</button>
+                        <button class="btn btn-danger">Excluir</button>
                     </i>
                 </a>
 
@@ -47,7 +52,7 @@
 
         </tbody>
     </table>
-    <a th:href="@{/}">
+    <a th:href="@{/form/save}">
         <button class="btn btn-primary">Cadastrar Cartorio</button>
     </a>
 </div>
