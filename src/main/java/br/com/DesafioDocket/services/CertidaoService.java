@@ -20,4 +20,11 @@ public class CertidaoService {
         return repository.findById(id).stream().collect(Collectors.toList());
     }
 
+    public List<Certidao> findAll() {
+        return repository.findAll();
+    }
+
+    public Certidao save(Certidao certidao) {
+        return repository.save(certidao);
+    }
 }
